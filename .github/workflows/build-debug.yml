@@ -23,6 +23,13 @@ jobs:
         with:
           gradle-version: '8.7'
 
+      - name: Diagnose Project Structure
+        run: |
+          echo "=== DIRECTORY LISTING ==="
+          find . -maxdepth 3 -not -path '*/.*'
+          echo "=== GRADLE PROJECTS ==="
+          gradle projects
+
       - name: Build Debug APK
         run: gradle :app:assembleDebug --stacktrace
 
